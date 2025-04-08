@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Central Hub</title>
+  <style>
+    :root {
+      --bg-dark: #000;
+      --bg-light: #fff;
+      --text-dark: #000;
+      --text-light: #fff;
+      --accent: #06b6d4;
+      --card-bg: #0f172a;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    body.light {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .container {
+      padding: 1.5rem;
+      min-height: 100vh;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      max-width: 30rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--accent);
+      border-radius: 0.5rem;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      margin-bottom: 1rem;
+      background-color: #083344;
+      color: white;
+    }
+
+    .tab-btn {
+      padding: 0.75rem;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background-color: var(--accent);
+      font-weight: bold;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      color: var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .card-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .visit-btn, .chat-btn {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--accent);
+      border-radius: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background-color: #1e293b;
+      color: white;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      width: 90%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .chat-box {
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      height: 150px;
+      overflow-y: auto;
+      background-color: #0f172a;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: none;
+    }
+
+    .chat-input button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: var(--accent);
+      color: black;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .msg {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="dark">
+  <div class="container">
+    <div class="header">
+      <h1>🧠 AI Central Hub</h1>
+      <button class="btn" id="toggleTheme">Light Mode</button>
+    </div>
+
+    <input type="text" id="search" placeholder="Search AIs...">
+
+    <div class="tabs" id="tabs">
+      <div class="tab-btn active" data-tab="chat">Chat</div>
+      <div class="tab-btn" data-tab="image">Image</div>
+      <div class="tab-btn" data-tab="voice">Voice</div>
+      <div class="tab-btn" data-tab="fun">Fun</div>
+      <div class="tab-btn" data-tab="music">Music</div>
+      <div class="tab-btn" data-tab="video">Video</div>
+      <div class="tab-btn" data-tab="game">Game</div>
+    </div>
+
+    <div id="tab-content"></div>
+  </div>
+
+  <div class="modal" id="chatModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="chatTitle">Chat</h2>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <div class="chat-box" id="chatBox">
+        <div class="msg">🧠 Hello! Ask me anything.</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Type a message...">
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+  chat: [
+    { name: "ChatGPT", url: "https://chat.openai.com" },
+    { name: "Claude", url: "https://claude.ai" },
+    { name: "Gemini (Bard)", url: "https://gemini.google.com" },
+    { name: "You.com", url: "https://you.com" },
+    { name: "Perplexity", url: "https://www.perplexity.ai" },
+    { name: "Phind", url: "https://www.phind.com" },
+    { name: "Mistral", url: "https://chat.mistral.ai" },
+    { name: "Pi by Inflection", url: "https://pi.ai" },
+    { name: "Replika", url: "https://replika.com" },
+    { name: "Poe", url: "https://poe.com" },
+    { name: "Jasper Chat", url: "https://www.jasper.ai/chat" },
+  ],
+  image: [
+    { name: "Krea AI", url: "https://krea.ai" },
+    { name: "Runway ML", url: "https://runwayml.com" },
+    { name: "Hugging Face Spaces", url: "https://huggingface.co/spaces" },
+    { name: "Leonardo AI", url: "https://leonardo.ai" },
+    { name: "Artbreeder", url: "https://www.artbreeder.com" },
+    { name: "Craiyon", url: "https://www.craiyon.com" },
+    { name: "NightCafe", url: "https://creator.nightcafe.studio" },
+    { name: "Deep Dream Generator", url: "https://deepdreamgenerator.com" },
+    { name: "Fotor AI Art", url: "https://www.fotor.com/features/ai-image-generator" },
+  ],
+  voice: [
+    { name: "ElevenLabs", url: "https://elevenlabs.io" },
+    { name: "PlayHT", url: "https://play.ht" },
+    { name: "Resemble AI", url: "https://www.resemble.ai" },
+    { name: "Voicemod AI", url: "https://www.voicemod.net/ai-voices" },
+    { name: "LOVO", url: "https://www.lovo.ai" },
+    { name: "Narakeet", url: "https://www.narakeet.com" },
+    { name: "Listnr", url: "https://www.listnr.tech" },
+  ],
+  fun: [
+    { name: "Character.AI", url: "https://character.ai" },
+    { name: "AI Dungeon", url: "https://play.aidungeon.io" },
+    { name: "Silly Tavern", url: "https://sillytavern.app" },
+    { name: "TalkToTransformer", url: "https://app.inferkit.com/demo" },
+    { name: "This X Does Not Exist", url: "https://thisxdoesnotexist.com" },
+    { name: "Botify AI", url: "https://www.botify.ai" },
+  ],
+  music: [
+    { name: "Suno", url: "https://suno.com" },
+    { name: "Boomy", url: "https://boomy.com" },
+    { name: "LALAL.AI", url: "https://www.lalal.ai" },
+    { name: "Aiva", url: "https://www.aiva.ai" },
+    { name: "Mubert", url: "https://mubert.com/render" },
+    { name: "Riffusion", url: "https://www.riffusion.com" },
+    { name: "Loudly", url: "https://www.loudly.com/ai-music" },
+  ],
+  video: [
+    { name: "Pika Labs", url: "https://pika.art" },
+    { name: "Synthesia", url: "https://www.synthesia.io" },
+    { name: "Runway Gen-2", url: "https://runwayml.com/gen2" },
+    { name: "HeyGen", url: "https://www.heygen.com" },
+    { name: "DeepBrain", url: "https://www.deepbrain.io" },
+    { name: "Colossyan", url: "https://www.colossyan.com" },
+    { name: "Animaker", url: "https://www.animaker.com/ai-video-generator" },
+  ],
+  game: [
+    { name: "AI Roguelite", url: "https://airoguelite.vercel.app" },
+    { name: "GPT Game", url: "https://gptgame.dev" },
+    { name: "Text Adventure AI", url: "https://adventureai.com" },
+    { name: "AIDungeon", url: "https://play.aidungeon.io" },
+    { name: "AI Pet Game", url: "https://chinchilla.world" },
+    { name: "AI Town", url: "https://huggingface.co/spaces/ai-town/ai-town" },
+  ]
+};
+
+
+    const searchInput = document.getElementById("search");
+    const tabContent = document.getElementById("tab-content");
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const toggleThemeBtn = document.getElementById("toggleTheme");
+    let currentTab = "chat";
+    let isDark = true;
+
+    const modal = document.getElementById("chatModal");
+    const chatBox = document.getElementById("chatBox");
+    const chatInput = document.getElementById("chatInput");
+    const chatTitle = document.getElementById("chatTitle");
+    let currentChatURL = "";
+
+    function renderCards(category) {
+      const searchVal = searchInput.value.toLowerCase();
+      const tools = data[category].filter(({ name }) =>
+        name.toLowerCase().includes(searchVal)
+      );
+
+      tabContent.innerHTML = `
+        <div class="card-grid">
+          ${tools.map(tool => `
+            <div class="card">
+              <div>
+                <h3>${tool.name}</h3>
+                <a href="${tool.url}" target="_blank">${tool.url.replace("https://", "")}</a>
+              </div>
+              <div class="card-buttons">
+                <a class="visit-btn" href="${tool.url}" target="_blank">🌐 Visit</a>
+                <button class="chat-btn" onclick="openChat('${tool.name}', '${tool.url}')">💬 Chat</button>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      tabButtons.forEach(btn => btn.classList.remove("active"));
+      document.querySelector(`[data-tab="${tab}"]`).classList.add("active");
+      renderCards(tab);
+    }
+
+    function openChat(name, url) {
+      chatTitle.textContent = `Chat with ${name}`;
+      chatBox.innerHTML = `<div class="msg">🧠 Hello! You're chatting with ${name}.</div>`;
+      chatInput.value = "";
+      currentChatURL = url;
+      modal.classList.add("active");
+    }
+
+    document.getElementById("closeModal").addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const msg = chatInput.value.trim();
+      if (msg) {
+        chatBox.innerHTML += `<div class="msg">🧐 ${msg}</div>`;
+        chatBox.innerHTML += `<div class="msg">🧠 Opening ${chatTitle.textContent}...</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+        window.open(currentChatURL, "_blank");
+        chatInput.value = "";
+      }
+    });
+
+    searchInput.addEventListener("input", () => renderCards(currentTab));
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+    });
+
+    toggleThemeBtn.addEventListener("click", () => {
+      isDark = !isDark;
+      document.body.className = isDark ? "dark" : "light";
+      toggleThemeBtn.textContent = isDark ? "Light Mode" : "Dark Mode";
+    });
+
+    renderCards("chat");
+  </script>
+</body>
+</html>
