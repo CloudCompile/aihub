@@ -595,12 +595,13 @@ function removeDuplicates(data) {
       tabContent.innerHTML = `
         <div class="card-grid">
           ${tools.map(tool => `
-            <div class="card">
-              <div>
-                <h3>${tool.name}</h3>
-                <a href="${tool.url}" target="_blank">${tool.url.replace("https://", "")}</a>
-              </div>
-              <div class="card-buttons">
+             <div class="card">
+        <div class="card-content">
+        <p class="card-title">${tool.name}</p>
+          <p class="card-para"><a href="${tool.url}" target="_blank">${tool.url.replace("https://", "")}</a></p>
+            </div>
+          </div>
+          <div class="card-buttons">
                 <a class="visit-btn" href="${tool.url}" target="_blank">🌐 Visit</a>
                 <button class="chat-btn" onclick="openChat('${tool.name}', '${tool.url}')">💬 Chat</button>
               </div>
