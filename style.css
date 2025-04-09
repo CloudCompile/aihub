@@ -77,7 +77,7 @@ nav a {
 }
 
 .custom-input-container {
-  position: relative;
+  position: center;
   display: inline-block;
   padding: 5px; /* Space for the glowing ring */
   border-radius: 40px;
