@@ -77,7 +77,10 @@ nav a {
 }
 
 .custom-input-container {
-  position: center;
+  position: absolute; /* Use absolute positioning for centering */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Offset by half its width and height */
   display: inline-block;
   padding: 5px; /* Space for the glowing ring */
   border-radius: 40px;
@@ -148,3 +151,4 @@ nav a {
     background-position: 0% 50%;
   }
 }
+
