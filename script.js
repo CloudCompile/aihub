@@ -10,7 +10,7 @@ const aiData = [
     name: "DALL-E",
     description: "Generate images from text descriptions.",
     url: "https://labs.openai.com/",
-    icon: "icons/dalle.png"
+    icon: "icons/dall-e.png"
   },
   // Add more AI entries as needed...
 ];
