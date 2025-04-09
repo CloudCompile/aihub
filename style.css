@@ -85,3 +85,76 @@ nav a {
   color: #007BFF;
   font-weight: bold;
 }
+
+.custom-input-container {
+  position: relative;
+  display: inline-block;
+  padding: 5px; /* Space for the glowing ring */
+  border-radius: 40px;
+  background: linear-gradient(45deg, purple, blue, navy, yellow);
+  background-size: 400% 400%;
+  animation: gradientCycle 5s ease infinite;
+}
+
+.custom-input-container::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: inherit;
+  filter: blur(8px);
+  z-index: -1;
+  background: inherit; /* Inherit the gradient from the container */
+}
+
+.custom-futuristic-input {
+  width: 300px;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Optional focus effect for the input itself */
+.custom-futuristic-input:focus {
+  background-color: #242424;
+}
+
+/* Style the placeholder text */
+.custom-futuristic-input::placeholder {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.custom-futuristic-input:focus::placeholder {
+  color: #fff;
+}
+
+/* Keyframes for cycling the gradient */
+@keyframes gradientCycle {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 200% 50%;
+  }
+  75% {
+    background-position: 300% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
