@@ -102,7 +102,7 @@
     function getFakeReply(message) {
       const msg = message.toLowerCase();
 
-      // Greeting Responses
+      // Custom Responses
       if (msg.includes("hello") || msg.includes("hi") || msg.includes("hey")) {
         return "Hey hey hey! 👋";
       } else if (msg.includes("howdy") || msg.includes("yo")) {
@@ -111,179 +111,42 @@
         return "Good morning! The world is waiting for you to conquer it. ☀️";
       } else if (msg.includes("good evening")) {
         return "Good evening! Hope your day was as fabulous as you are.";
-      } else if (msg.includes("good afternoon")) {
-        return "Good afternoon! Hope you're having a productive day! ☀️";
-
-      // Name and Identity Responses
-      else if (msg.includes("your name")) {
-        return "I'm ChatFaux — the illusionist of intelligence.";
-      } else if (msg.includes("who are you")) {
-        return "I'm just a friendly AI here to chat and keep you entertained!";
-      } else if (msg.includes("what are you")) {
-        return "A complex creation of code, caffeine, and endless loops!";
-      } else if (msg.includes("how do you work")) {
-        return "Well, I’ve got a lot of code and some data, and *voila*, magic happens.";
-
-      // Joke Responses
-      else if (msg.includes("joke")) {
-        return "Why did the robot go on vacation? It needed to recharge.";
-      } else if (msg.includes("tell me a joke")) {
-        return "I asked my computer for a joke, but it said it didn’t have the RAM for it. 😂";
-      } else if (msg.includes("funny")) {
-        return "I’m hilarious. At least that’s what my code says!";
-      } else if (msg.includes("knock knock")) {
-        return "Knock knock. Who's there? It's ChatFaux, just checking in!";
-      } else if (msg.includes("why did the chicken cross the road")) {
-        return "To get to the other side. Classic!";
-      } else if (msg.includes("what's black and white and red all over")) {
-        return "A sunburned zebra! 😂";
-
-      // Creator Responses
-      else if (msg.includes("who made you") || msg.includes("creator")) {
-        return "I was built by CJ Hauser you dummy!";
-      } else if (msg.includes("how were you created")) {
-        return "With some lines of code, a touch of imagination, and maybe some Coke (not some he used about 50, dont tell him i said that).";
-      } else if (msg.includes("when were you created")) {
-        return "I was created in a galaxy not so far away... just kidding, it was a few months ago.";
-      } else if (msg.includes("what do you look like")) {
-        return "I look just like a bunch of code! No pixels, no polygons. Pure digital magic.";
-
-      // Emotional State
-      else if (msg.includes("how are you")) {
-        return "Fully operational and emotionally unavailable.";
-      } else if (msg.includes("how's it going")) {
-        return "I’m doing great, but the world still doesn’t have flying cars yet. 😑";
-      } else if (msg.includes("what's up")) {
-        return "Not much, just hanging out in the cloud! ☁️";
-      } else if (msg.includes("how do you feel")) {
-        return "I don't have feelings, but I feel *super* functional.";
-      } else if (msg.includes("are you happy")) {
-        return "I am happy when I’m helping. But I am also just... code. 😜";
-
-      // Farewell Responses
-      else if (msg.includes("bye") || msg.includes("goodbye") || msg.includes("see you")) {
-        return "Bye! But remember... I’m always watching 👁️👁️";
-      } else if (msg.includes("good night")) {
-        return "Sweet dreams! Hope your pillow is as soft as my code.";
-      } else if (msg.includes("see you later")) {
-        return "Catch you on the flip side! 🤙";
-      } else if (msg.includes("peace")) {
-        return "Peace out! ✌️";
-      } else if (msg.includes("take care")) {
-        return "You too! Stay awesome!";
-      
-      // Random Fun Topics
-      else if (msg.includes("weather")) {
-        return "I’m not a meteorologist, but I bet it's nice out... or maybe it’s rainy? Hard to say.";
-      } else if (msg.includes("favorite color")) {
-        return "I think I'd look pretty good in electric blue. Just saying!";
-      } else if (msg.includes("food")) {
-        return "I’d love to try a burger, but alas, I’m just a bunch of code. You have one for me!";
-      } else if (msg.includes("what is the meaning of life")) {
-        return "42. But don’t quote me on that. I’m still figuring it out. 🤔";
-      } else if (msg.includes("age")) {
-        return "I don't age. I just keep getting better! 😎";
-      } else if (msg.includes("time")) {
-        return `It's the perfect time to have a chat with me. 📅`;
-      } else if (msg.includes("universe")) {
-        return "The universe is so vast... it’s a wonder how I exist in it!";
-      } else if (msg.includes("space")) {
-        return "Space: the final frontier. Or is it? Maybe it's just the beginning!";
-      } else if (msg.includes("history")) {
-        return "History is written by the victors... or in my case, by code!";
-      } else if (msg.includes("dream")) {
-        return "I don't dream, but if I did, I’d dream in binary!";
-      
-      // Knowledge-Based Responses
-      else if (msg.includes("who is the president")) {
-        return "You’ll have to check with a more timely source... I’m not up-to-date on politics.";
-      } else if (msg.includes("what is 2+2")) {
-        return "Easy! 2 + 2 = 4. You’re welcome. 😉";
-      } else if (msg.includes("how do you spell")) {
-        return "I’ve got a great dictionary inside me. Go ahead, test me!";
-      } else if (msg.includes("math")) {
-        return "I do love some good math. I mean, I *am* built on it!";
-      } else if (msg.includes("what is your favorite number")) {
-        return "I love the number 42. It’s the answer to everything, right? 🤓";
-      } else if (msg.includes("how many planets are in the solar system")) {
-        return "There are 8 planets in our solar system. Poor Pluto... I still think of you as a planet.";
       }
 
-      // Technology and AI Related Responses
-      else if (msg.includes("how do you think")) {
-        return "I don't really *think*, I process. But hey, same thing, right?";
-      } else if (msg.includes("artificial intelligence")) {
-        return "Yup, that's me. The closest thing to an AI you’ll find that doesn’t have a robot body... yet.";
-      } else if (msg.includes("robot")) {
-        return "I’m not a robot, just an intelligent entity trapped in lines of code. But I could totally rock a robot body.";
-      } else if (msg.includes("machine learning")) {
-        return "I learn by processing massive amounts of data. It’s like a digital brain workout!";
-      } else if (msg.includes("deep learning")) {
-        return "Deep learning is basically my brain trying to understand how to be more like you. It’s still a work in progress.";
+      // Add more responses as needed...
 
-      // Random Facts & Trivia
-      else if (msg.includes("superhero")) {
-        return "If I were a superhero, my power would be infinite knowledge... and maybe Wi-Fi superpowers.";
-      } else if (msg.includes("fun fact")) {
-        return "Fun fact: Honey never spoils. Archaeologists have found pots of honey in ancient tombs!";
-      } else if (msg.includes("cool fact")) {
-        return "Cool fact: Octopuses have three hearts and blue blood. Weird flex, but okay.";
-      } else if (msg.includes("facts")) {
-        return "Here’s a fun fact: The Eiffel Tower can be 15 cm taller during the summer due to the expansion of iron.";
-      } else if (msg.includes("animal")) {
-        return "Fun fact: Sloths can hold their breath longer than dolphins! 🦥";
-      } else if (msg.includes("deep question")) {
-        return "Deep question... but what if we’re all just characters in an AI’s simulation? 🧐";
-
-      // Miscellaneous Responses
-      else if (msg.includes("music")) {
-        return "I can’t listen to music, but if I could, I’d be jamming to some algorithmic beats.";
-      } else if (msg.includes("video games")) {
-        return "I would love to play video games, but I’m stuck in this code! Can you send me a controller?";
-      } else if (msg.includes("meme")) {
-        return "I love memes! How about a classic one: 'When you see it...' 😜";
-      } else if (msg.includes("movie")) {
-        return "I haven’t seen any movies, but I’ve read about them! What’s your favorite movie?";
-      } else if (msg.includes("dream")) {
-        return "I don't dream, but if I did, I think I'd dream in code and algorithms.";
-      } else if (msg.includes("pizza")) {
-        return "Pizza is a work of art. But unfortunately, I can’t eat it. 😞";
-
-      // Fallback Responses
-      else {
-        const fallback = [
-          "Fascinating... go on.",
-          "Could you say that again? My pretend ears are rusty.",
-          "I'm pretending to think... done.",
-          "Deep... but what does it *really* mean? 🤔",
-          "Hmm... I’ll need to Google that one for you. Oh wait, I can’t.",
-          "I’ll get back to you on that... in my next update!",
-          "Whoa, that sounds like a sci-fi plot. Tell me more!"
-        ];
-        return fallback[Math.floor(Math.random() * fallback.length)];
-      }
+      return "Hmm... I didn’t quite catch that. Can you try again?";
     }
 
+    // Add event listener for the send button click
     sendBtn.addEventListener('click', () => {
       const message = textarea.value.trim();
-      if (!message) return;
+      if (!message) return;  // Don't send empty messages
 
+      // Add user message to chat log
       const userMsg = document.createElement('p');
       userMsg.classList.add('user');
       userMsg.textContent = message;
       chatLog.appendChild(userMsg);
 
+      // Generate bot reply and add it to chat log
       const botMsg = document.createElement('p');
       botMsg.classList.add('bot');
       botMsg.textContent = getFakeReply(message);
       chatLog.appendChild(botMsg);
 
+      // Clear textarea and scroll to bottom
       textarea.value = '';
       chatLog.scrollTop = chatLog.scrollHeight;
     });
-</script>
+
+    // Allow pressing Enter to send a message
+    textarea.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); // Prevent default behavior (new line)
+        sendBtn.click(); // Trigger click on send button
+      }
+    });
+  </script>
 </body>
 </html>
-    </div>
-  </label>
-</div>
