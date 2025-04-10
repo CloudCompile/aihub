@@ -156,7 +156,6 @@ const aiData = [
     url: "https://www.ada.cx/",
     icon: "icons/ada.png"
   }
-);
 ];
 
 
