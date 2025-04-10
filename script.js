@@ -1,6 +1,12 @@
 // Sample dataset for popular AIs
 const aiData = [
   {
+    name: "FauxGPT",
+    description: "A simple AI assistant made by CJ Hauser.",
+    url: "chat.html",
+    icon: "icons/fauxgpt.png"
+  },
+  {
     name: "ChatGPT",
     description: "A conversational AI assistant developed by OpenAI.",
     url: "https://chat.openai.com/",
