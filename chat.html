@@ -102,7 +102,7 @@
     function getFakeReply(message) {
       const msg = message.toLowerCase();
 
-      // Greeting Responses
+       // Greeting Responses
       if (msg.includes("hello") || msg.includes("hi") || msg.includes("hey")) {
         return "Hey hey hey! 👋";
       } else if (msg.includes("howdy") || msg.includes("yo")) {
@@ -264,26 +264,35 @@
       }
     }
 
+    // Add event listener for the send button click
     sendBtn.addEventListener('click', () => {
       const message = textarea.value.trim();
-      if (!message) return;
+      if (!message) return;  // Don't send empty messages
 
+      // Add user message to chat log
       const userMsg = document.createElement('p');
       userMsg.classList.add('user');
       userMsg.textContent = message;
       chatLog.appendChild(userMsg);
 
+      // Generate bot reply and add it to chat log
       const botMsg = document.createElement('p');
       botMsg.classList.add('bot');
       botMsg.textContent = getFakeReply(message);
       chatLog.appendChild(botMsg);
 
+      // Clear textarea and scroll to bottom
       textarea.value = '';
       chatLog.scrollTop = chatLog.scrollHeight;
     });
-</script>
+
+    // Allow pressing Enter to send a message
+    textarea.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); // Prevent default behavior (new line)
+        sendBtn.click(); // Trigger click on send button
+      }
+    });
+  </script>
 </body>
 </html>
-    </div>
-  </label>
-</div>
