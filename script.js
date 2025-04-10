@@ -85,12 +85,6 @@ const aiData = [
     icon: "icons/ibm-watson.png"
   },
   {
-    name: "Replika",
-    description: "A personal AI companion designed to engage in meaningful conversations.",
-    url: "https://replika.ai/",
-    icon: "icons/replika.png"
-  },
-  {
     name: "Jasper AI",
     description: "An AI assistant focused on content creation and intelligent copywriting.",
     url: "https://www.jasper.ai/",
