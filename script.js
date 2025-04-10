@@ -101,7 +101,7 @@ const aiData = [
     description: "A tool to easily build custom machine learning models with no coding required.",
     url: "https://www.lobe.ai/",
     icon: "icons/lobe.png"
-  }
+  },
   {
     name: "Hugging Face",
     description: "A platform for open-source machine learning models and datasets, widely used for natural language processing and computer vision tasks.",
