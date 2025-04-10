@@ -102,6 +102,61 @@ const aiData = [
     url: "https://www.lobe.ai/",
     icon: "icons/lobe.png"
   }
+  {
+    name: "Hugging Face",
+    description: "A platform for open-source machine learning models and datasets, widely used for natural language processing and computer vision tasks.",
+    url: "https://huggingface.co/",
+    icon: "icons/huggingface.png"
+  },
+  {
+    name: "Open Assistant",
+    description: "A community-driven open-source AI assistant aimed at being ethical and transparent.",
+    url: "https://open-assistant.io/",
+    icon: "icons/open-assistant.png"
+  },
+  {
+    name: "Perplexity AI",
+    description: "An AI-powered search engine designed to provide concise and accurate answers to queries.",
+    url: "https://www.perplexity.ai/",
+    icon: "icons/perplexity.png"
+  },
+  {
+    name: "Cohere",
+    description: "A natural language processing platform offering APIs for text generation and semantic search.",
+    url: "https://cohere.ai/",
+    icon: "icons/cohere.png"
+  },
+  {
+    name: "Replit Ghostwriter",
+    description: "An AI-powered code assistant embedded in the Replit IDE for accelerating software development.",
+    url: "https://replit.com/ghostwriter",
+    icon: "icons/replit-ghostwriter.png"
+  },
+  {
+    name: "Tabnine",
+    description: "An AI code completion tool that integrates with popular IDEs to speed up programming.",
+    url: "https://www.tabnine.com/",
+    icon: "icons/tabnine.png"
+  },
+  {
+    name: "Soundraw",
+    description: "An AI music generator allowing users to create royalty-free, customizable tracks.",
+    url: "https://soundraw.io/",
+    icon: "icons/soundraw.png"
+  },
+  {
+    name: "DeepL Write",
+    description: "An AI-driven writing assistant focusing on grammar and style improvements for writers.",
+    url: "https://www.deepl.com/write",
+    icon: "icons/deepl-write.png"
+  },
+  {
+    name: "Ada",
+    description: "An AI platform for automating customer support with conversational AI and chatbots.",
+    url: "https://www.ada.cx/",
+    icon: "icons/ada.png"
+  }
+);
 ];
 
 
