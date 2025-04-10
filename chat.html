@@ -113,7 +113,7 @@
         return "Good evening! Hope your day was as fabulous as you are.";
       } else if (msg.includes("good afternoon")) {
         return "Good afternoon! Hope you're having a productive day! ☀️";
-
+    }
       // Name and Identity Responses
       else if (msg.includes("your name")) {
         return "I'm ChatFaux — the illusionist of intelligence.";
@@ -263,6 +263,7 @@
         return fallback[Math.floor(Math.random() * fallback.length)];
       }
     }
+    
 
     // Add event listener for the send button click
     sendBtn.addEventListener('click', () => {
